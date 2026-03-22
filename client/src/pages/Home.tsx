@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ChevronRight, Globe, Zap, Users, TrendingUp, MapPin, Calendar, Plane } from "lucide-react";
 import { useState } from "react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 /**
  * Zoule.ai - AI-Powered Travel Planning Browser
@@ -15,7 +16,7 @@ import { useState } from "react";
  * - Muted: Sage gray - supporting text
  * 
  * Typography:
- * - Headlines: Playfair Display (serif) - elegant, premium
+ * - Headlines: Open Sans (sans-serif) - clean, modern
  * - Body: Inter (sans-serif) - clean, readable, modern
  */
 
@@ -72,7 +73,7 @@ export default function Home() {
               Travel Planning, <span className="text-primary">Reimagined</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-lg">
-              Eliminate the tedious, repetitive work of travel booking. Zoule.ai automates deal hunting, data entry, and comparison—while keeping you in control.
+              Eliminate the tedious, repetitive work of travel booking. Zoule.ai automates deal hunting, data entry, and comparison - while keeping you in control.
             </p>
             <div className="flex gap-4 pt-4">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
@@ -109,13 +110,13 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* B2B Card */}
-            <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors shadow-lg">
+            <Card id="for-agencies" className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors shadow-lg">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                 <Users className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-2xl font-bold mb-4">For Travel Agencies</h3>
               <p className="text-muted-foreground mb-6">
-                Manage bookings for multiple travelers effortlessly. Optimize loyalty programs, credit card benefits, and pricing across all platforms—all from one unified interface.
+                Manage bookings for multiple travelers effortlessly. Optimize loyalty programs, credit card benefits, and pricing across all platforms - all from one unified interface.
               </p>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center gap-2">
@@ -138,7 +139,7 @@ export default function Home() {
             </Card>
 
             {/* B2C Card */}
-            <Card className="p-8 border-2 border-secondary/20 hover:border-secondary/50 transition-colors shadow-lg">
+            <Card id="for-travelers" className="p-8 border-2 border-secondary/20 hover:border-secondary/50 transition-colors shadow-lg">
               <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
                 <TrendingUp className="w-6 h-6 text-secondary" />
               </div>
@@ -284,7 +285,7 @@ export default function Home() {
                 </div>
                 <div className="flex-1 pt-2">
                   <h3 className="text-xl font-bold">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.phase} • {item.timeline}</p>
+                  <p className="text-muted-foreground">{item.phase} - {item.timeline}</p>
                 </div>
               </div>
             ))}
@@ -300,85 +301,36 @@ export default function Home() {
             Join travel agencies and frequent travelers who are already saving time and money with Zoule.ai.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-              Start Free Trial <ChevronRight className="ml-2 w-4 h-4" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="lg" disabled className="bg-gray-400 text-white cursor-not-allowed">
+                  Start Free Trial <ChevronRight className="ml-2 w-4 h-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Coming Soon</TooltipContent>
+            </Tooltip>
+            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5" onClick={() => window.open('https://calendly.com/nikhil-buk/30min', '_blank')}>
               Schedule Demo
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section - Calendly Widget */}
       <section id="contact" className="py-20">
-        <div className="container mx-auto px-4 max-w-2xl">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Schedule a Demo</h2>
             <p className="text-xl text-muted-foreground">
-              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              Book a time that works best for you to see Zoule.ai in action.
             </p>
           </div>
 
-          <Card className="p-8 border-2 border-primary/20">
-            <form onSubmit={handleFormSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-foreground">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleFormChange}
-                    required
-                    className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-foreground">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleFormChange}
-                    required
-                    className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-foreground">Company</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleFormChange}
-                  className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                  placeholder="Your company"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-foreground">Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleFormChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
-                  placeholder="Tell us about your travel planning needs..."
-                ></textarea>
-              </div>
-
-              <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-white">
-                Send Message
-              </Button>
-            </form>
-          </Card>
+          <div className="max-w-2xl mx-auto">
+            {/* Calendly inline widget */}
+            <div className="calendly-inline-widget" data-url="https://calendly.com/nikhil-buk/30min?hide_event_type_details=1&hide_gdpr_banner=1" style={{ minWidth: '320px', height: '700px' }}></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          </div>
         </div>
       </section>
 
@@ -400,14 +352,12 @@ export default function Home() {
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#features" className="hover:text-primary transition-colors">Features</a></li>
                 <li><a href="#roadmap" className="hover:text-primary transition-colors">Roadmap</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
                 <li><a href="#contact" className="hover:text-primary transition-colors">Contact</a></li>
               </ul>
             </div>
@@ -426,9 +376,9 @@ export default function Home() {
                 © 2026 Buk Technology Inc. All rights reserved. Zoule.ai is a product of Buk Technology Inc.
               </p>
               <div className="flex gap-6">
-                <a href="#" className="text-gray-400 hover:text-primary transition-colors">Twitter</a>
-                <a href="#" className="text-gray-400 hover:text-primary transition-colors">LinkedIn</a>
-                <a href="#" className="text-gray-400 hover:text-primary transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/company/trav-protocol/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors">LinkedIn</a>
+                <a href="https://x.com/bukprotocol" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors">Twitter/X</a>
+                <a href="https://github.com/BUK-protocol/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors">GitHub</a>
               </div>
             </div>
           </div>
