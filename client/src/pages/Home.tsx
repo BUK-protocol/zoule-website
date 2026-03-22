@@ -58,7 +58,7 @@ export default function Home() {
             <a href="#roadmap" className="text-muted-foreground hover:text-primary transition-colors">Roadmap</a>
             <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
           </div>
-          <Button className="bg-primary hover:bg-primary/90 text-white">Get Started</Button>
+          <Button className="bg-primary hover:bg-primary/90 text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>Get Started</Button>
         </div>
       </nav>
 
@@ -76,22 +76,22 @@ export default function Home() {
               Eliminate the tedious, repetitive work of travel booking. Zoule.ai automates deal hunting, data entry, and comparison - while keeping you in control.
             </p>
             <div className="flex gap-4 pt-4">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button size="lg" disabled className="bg-gray-400 text-white cursor-not-allowed">
-                    Start Free Trial <ChevronRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>Coming Soon</TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button size="lg" disabled variant="outline" className="border-gray-400 text-gray-400 cursor-not-allowed">
-                    Watch Demo
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>Coming Soon</TooltipContent>
-              </Tooltip>
+            <div className="group relative">
+              <Button size="lg" disabled className="bg-gray-400 text-white cursor-not-allowed">
+                Start Free Trial <ChevronRight className="ml-2 w-4 h-4" />
+              </Button>
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-foreground text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                Coming Soon
+              </div>
+            </div>
+            <div className="group relative">
+              <Button size="lg" disabled variant="outline" className="border-gray-400 text-gray-400 cursor-not-allowed">
+                Watch Demo
+              </Button>
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-foreground text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                Coming Soon
+              </div>
+            </div>
             </div>
           </div>
           <div className="relative">
@@ -311,14 +311,14 @@ export default function Home() {
             Join travel agencies and frequent travelers who are already saving time and money with Zoule.ai.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button size="lg" disabled className="bg-gray-400 text-white cursor-not-allowed">
-                  Start Free Trial <ChevronRight className="ml-2 w-4 h-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Coming Soon</TooltipContent>
-            </Tooltip>
+            <div className="group relative">
+              <Button size="lg" disabled className="bg-gray-400 text-white cursor-not-allowed">
+                Start Free Trial <ChevronRight className="ml-2 w-4 h-4" />
+              </Button>
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-foreground text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                Coming Soon
+              </div>
+            </div>
             <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5" onClick={() => window.open('https://calendly.com/nikhil-buk/30min', '_blank')}>
               Schedule Demo
             </Button>
