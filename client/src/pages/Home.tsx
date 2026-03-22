@@ -76,12 +76,22 @@ export default function Home() {
               Eliminate the tedious, repetitive work of travel booking. Zoule.ai automates deal hunting, data entry, and comparison - while keeping you in control.
             </p>
             <div className="flex gap-4 pt-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                Start Free Trial <ChevronRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
-                Watch Demo
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button size="lg" disabled className="bg-gray-400 text-white cursor-not-allowed">
+                    Start Free Trial <ChevronRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Coming Soon</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button size="lg" disabled variant="outline" className="border-gray-400 text-gray-400 cursor-not-allowed">
+                    Watch Demo
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Coming Soon</TooltipContent>
+              </Tooltip>
             </div>
           </div>
           <div className="relative">
@@ -269,10 +279,10 @@ export default function Home() {
           <div className="space-y-6 max-w-3xl mx-auto">
             {[
               { phase: "Phase 1", title: "MVP - Single Hotel Search", timeline: "1-2 months", status: "Current" },
-              { phase: "Phase 2", title: "Multi-City Hotel Search", timeline: "Month 2-3", status: "Planned" },
-              { phase: "Phase 3", title: "Flights + Loyalty Optimization", timeline: "Month 4-5", status: "Planned" },
-              { phase: "Phase 4", title: "Itinerary Optimization + Mobile", timeline: "Month 6-8", status: "Planned" },
-              { phase: "Phase 5+", title: "Transport, Attractions, Meals & Beyond", timeline: "Year 2+", status: "Future" },
+              { phase: "Phase 2", title: "Multi-City Hotel Search", timeline: "Month 3-5", status: "Planned" },
+              { phase: "Phase 3", title: "Flights + Loyalty Optimization", timeline: "Month 6-8", status: "Planned" },
+              { phase: "Phase 4", title: "Itinerary Optimization + Mobile", timeline: "Month 9-12", status: "Planned" },
+              { phase: "Phase 5+", title: "Transport, Attractions, Meals & Beyond", timeline: "Year 2 onwards", status: "Future" },
             ].map((item, idx) => (
               <div key={idx} className="flex gap-6 items-start">
                 <div className="flex flex-col items-center">
